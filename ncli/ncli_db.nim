@@ -160,12 +160,7 @@ proc cmdBench(conf: DbConf, runtimePreset: RuntimePreset) =
     if conf.storeStates:
       withTimer(timers[tDbStore]):
         if state[].data.slot mod SLOTS_PER_EPOCH == 0:
-          #dbBenchmark.putState(state[].root, state[].data)
-          let (baseIndex, immutableValidators) =
-            getImmutableValidators(state[].data)
-          dbBenchmark.putImmutableValidators(baseIndex, immutableValidators[])
-          dbBenchmark.putStateOnlyMutableValidators(
-            state[].root, getBeaconStateNoImmutableValidators(state[].data)[])
+          dbBenchmark.putState(state[].root, state[].data)
         dbBenchmark.checkpoint()
 
   printTimers(false, timers)
