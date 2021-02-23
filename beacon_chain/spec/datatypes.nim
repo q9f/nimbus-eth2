@@ -61,7 +61,7 @@ const
   # Not part of spec. Still useful, pending removing usage if appropriate.
   ZERO_HASH* = Eth2Digest()
   MAX_GRAFFITI_SIZE = 32
-  FAR_FUTURE_SLOT* = (not 0'u64 div 2 div SECONDS_PER_SLOT div 1_000_000_000).Slot # this will be converted to int64 nanoseconds, at some point
+  FAR_FUTURE_SLOT* = (not 0'u64).Slot
 
   # https://github.com/ethereum/eth2.0-specs/blob/v1.0.0/specs/phase0/p2p-interface.md#configuration
   MAXIMUM_GOSSIP_CLOCK_DISPARITY* = 500.millis
